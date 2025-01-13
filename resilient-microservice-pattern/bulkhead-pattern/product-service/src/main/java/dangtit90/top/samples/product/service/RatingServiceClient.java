@@ -16,7 +16,7 @@ public class RatingServiceClient {
     @Value("${rating.service.endpoint}")
     private String ratingService;
 
-    @Bulkhead(name = "ratingService", fallbackMethod = "getDefault")
+    // @Bulkhead(name = "ratingService", fallbackMethod = "getDefault")
     public ProductRatingDto getProductRatingDto(int productId) {
         return this.restTemplate.getForEntity(this.ratingService + productId, ProductRatingDto.class)
                 .getBody();
